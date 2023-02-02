@@ -4,6 +4,8 @@ public class Policy
    private String fName, lName, smokeStatus;
    private double height, weight;
    
+   final double BASEPRICE = 600;
+   
    public Policy(int num, String fName, String lName, int age, String smokeStatus, double height, double weight)
    {
       this.num = num;
@@ -26,73 +28,91 @@ public class Policy
       weight = 0;
    }
    
-   private int getNum()
+   public int getNum()
    {
       return num;
    }
    
-   private void setNum(int number)
+   public void setNum(int number)
    {
       num = number;
    }
    
-   private String getFName()
+   public String getFName()
    {
       return fName;
    }
    
-   private void setFName(String name)
+   public void setFName(String name)
    {
       fName = name;
    }
    
-   private String getLName()
+   public String getLName()
    {
       return lName;
    }
    
-   private void setLName(String name)
+   public void setLName(String name)
    {
       lName = name;
    }
    
-   private int getAge()
+   public int getAge()
    {
       return age;
    }
    
-   private void setAge(int num)
+   public void setAge(int num)
    {
       age = num;
    }
    
-   private String getSmoke()
+   public String getSmoke()
    {
       return smokeStatus;
    }
    
-   private void setSmoke(String status)
+   public void setSmoke(String status)
    {
       smokeStatus = status;
    }
    
-   private double getHeight()
+   public double getHeight()
    {
       return height;
    }
    
-   private void setHeight(double num)
+   public void setHeight(double num)
    {
       height = num;
    }
    
-   private double getWeight()
+   public double getWeight()
    {
       return weight;
    }
    
-   private void setWeight(double num)
+   public void setWeight(double num)
    {
       weight = num;
+   }
+   
+   public  double getBMI()
+   {
+      return (getWeight() * 703)/(getHeight() * getHeight());
+   }
+   
+   public double getPrice()
+   {
+      double price = BASEPRICE;
+      
+      if (getAge() > 50) 
+         price += 75;
+      if (getSmoke().equalsIgnoreCase("smoker"))
+         price =+ 100;
+      if (getBMI() > 35)
+         price =+ ((getBMI() - 35)*20);
+      return price;
    }
 }
