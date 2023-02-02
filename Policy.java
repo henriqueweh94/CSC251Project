@@ -31,7 +31,7 @@ public class Policy
       return num;
    }
    
-   private int setNum(int number)
+   private void setNum(int number)
    {
       num = number;
    }
@@ -41,7 +41,7 @@ public class Policy
       return fName;
    }
    
-   private String setFName(String name)
+   private void setFName(String name)
    {
       fName = name;
    }
@@ -51,7 +51,7 @@ public class Policy
       return lName;
    }
    
-   private String setLName(String name)
+   private void setLName(String name)
    {
       lName = name;
    }
@@ -61,7 +61,7 @@ public class Policy
       return age;
    }
    
-   private int setAge(int num)
+   private void setAge(int num)
    {
       age = num;
    }
@@ -71,7 +71,7 @@ public class Policy
       return smokeStatus;
    }
    
-   private String setSmoke(String status)
+   private void setSmoke(String status)
    {
       smokeStatus = status;
    }
@@ -81,7 +81,7 @@ public class Policy
       return height;
    }
    
-   private int setHeight(double num)
+   private void setHeight(double num)
    {
       height = num;
    }
@@ -91,7 +91,7 @@ public class Policy
       return weight;
    }
    
-   private int setWeight(double num)
+   private void setWeight(double num)
    {
       weight = num;
    }
