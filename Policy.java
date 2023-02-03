@@ -1,14 +1,15 @@
 public class Policy
 {
    private int num, age;
-   private String fName, lName, smokeStatus;
+   private String provider, fName, lName, smokeStatus;
    private double height, weight;
    
    final double BASEPRICE = 600;
    
-   public Policy(int num, String fName, String lName, int age, String smokeStatus, double height, double weight)
+   public Policy(int num, String provider, String fName, String lName, int age, String smokeStatus, double height, double weight)
    {
       this.num = num;
+      this.provider = provider;
       this.fName = fName;
       this.lName = lName;
       this.age = age;
@@ -36,6 +37,16 @@ public class Policy
    public void setNum(int number)
    {
       num = number;
+   }
+   
+   public String getProvier()
+   {
+      return provider;
+   }
+   
+   public void setProvider(String company)
+   {
+      provider = company;
    }
    
    public String getFName()
@@ -100,19 +111,24 @@ public class Policy
    
    public  double getBMI()
    {
-      return (getWeight() * 703)/(getHeight() * getHeight());
+      return (weight * 703)/(height * height);
    }
    
    public double getPrice()
    {
       double price = BASEPRICE;
       
-      if (getAge() > 50) 
+      if (age > 50) 
          price += 75;
-      if (getSmoke().equalsIgnoreCase("smoker"))
-         price =+ 100;
+      if (smokeStatus.equalsIgnoreCase("smoker"))
+         price += 100;
       if (getBMI() > 35)
-         price =+ ((getBMI() - 35)*20);
+         price += ((getBMI() - 35)*20);
       return price;
+   }
+   
+   public String getInfo()
+   {
+      return String.format("\nPolicy Number: %d\nProvider Name: %s\nPolicyholder's First Name: %s\nPolicyholder's Last Name: %s\nPolicyholder's Age: %d\nPolicyholder's Smoking Status: %s\nPolicyholder's Height: %.1f inches\nPolicyholder's Weight: %.1f pounds\nPolicyholder's BMI: %.2f\nPolicy Price: $%.2f", num, provider, fName, lName, age, smokeStatus, height, weight, getBMI(), getPrice());
    }
 }
