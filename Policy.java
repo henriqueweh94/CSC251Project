@@ -1,11 +1,14 @@
 public class Policy
 {
+   //Variable declarations
    private int num, age;
    private String provider, fName, lName, smokeStatus;
    private double height, weight;
    
+   //named constant of for the base price of the policy
    final double BASEPRICE = 600;
    
+   //constructor
    public Policy(int num, String provider, String fName, String lName, int age, String smokeStatus, double height, double weight)
    {
       this.num = num;
@@ -18,6 +21,7 @@ public class Policy
       this.weight = weight;
    }
    
+   //no-arg constructor
    public Policy()
    {
       num = 1111;
@@ -29,6 +33,7 @@ public class Policy
       weight = 0;
    }
    
+   //accessor/mutator methods
    public int getNum()
    {
       return num;
@@ -109,11 +114,13 @@ public class Policy
       weight = num;
    }
    
+   //This method will calculate the total BMI of the policy holder. This number will be returned as a double
    public  double getBMI()
    {
       return (weight * 703)/(height * height);
    }
    
+   //This method will calculate the total price of the policy returned as a double
    public double getPrice()
    {
       double price = BASEPRICE;
@@ -127,6 +134,7 @@ public class Policy
       return price;
    }
    
+   //This method will return a String with all  the information of the policy holder
    public String getInfo()
    {
       return String.format("\nPolicy Number: %d\nProvider Name: %s\nPolicyholder's First Name: %s\nPolicyholder's Last Name: %s\nPolicyholder's Age: %d\nPolicyholder's Smoking Status: %s\nPolicyholder's Height: %.1f inches\nPolicyholder's Weight: %.1f pounds\nPolicyholder's BMI: %.2f\nPolicy Price: $%.2f", num, provider, fName, lName, age, smokeStatus, height, weight, getBMI(), getPrice());
