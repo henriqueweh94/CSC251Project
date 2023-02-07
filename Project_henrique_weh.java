@@ -1,4 +1,6 @@
 /*
+   Henrique Weh
+   CSC251-N802
    This is the demo code for the Policy class
 */
 
