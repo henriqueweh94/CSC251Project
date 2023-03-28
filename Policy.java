@@ -6,6 +6,7 @@ public class Policy
    //Variable declarations
    private int num;
    private String provider;
+   private PolicyHolder holder;
    
    //named constant of for the base price of the policy
    final double BASEPRICE = 600;
@@ -14,24 +15,13 @@ public class Policy
       Policy constructor. When new instance is created, this method will be called to give the object its initial values.
       @param num Policy number.
       @param provider Insurence provider.
-      @param fName policy holder's first name.
-      @param lName policy holder's last name.
-      @param age policy holdser's age.
-      @param smokeStatus policy holder's smoke status.
-      @param height policy holder's height.
-      @param weight policy holders' weight.
       
    */
-   public Policy(int num, String provider, String fName, String lName, int age, String smokeStatus, double height, double weight)
+   public Policy(int num, String provider, PolicyHolder holder)
    {
       this.num = num;
       this.provider = provider;
-      this.fName = fName;
-      this.lName = lName;
-      this.age = age;
-      this.smokeStatus = smokeStatus;
-      this.height = height;
-      this.weight = weight;
+      this.holder = new PolicyHolder(holder);
    }
    
    /**
@@ -40,12 +30,8 @@ public class Policy
    public Policy()
    {
       num = 1111;
-      fName = "N/A";
-      lName = "N/A";
-      age = 0;
-      smokeStatus = "N/A";
-      height = 0;
-      weight = 0;
+      provider = "N/A";
+      holder = new PolicyHolder();
    }
    
    /**
@@ -83,113 +69,14 @@ public class Policy
    {
       provider = company;
    }
-   
+      
    /**
       accessor method. Used to get info from object when needed.
-      @return The policy holder's first name.
+      @return The policy holder object.
    */
-   public String getFName()
+   public PolicyHolder getHolder()
    {
-      return fName;
-   }
-   
-   /**
-      mutator method. Used to change the data in the constructor
-      @param name Policy holder's first name.
-   */
-   public void setFName(String name)
-   {
-      fName = name;
-   }
-   
-   /**
-      accessor method. Used to get info from object when needed.
-      @return The user's last name.
-   */
-   public String getLName()
-   {
-      return lName;
-   }
-   
-   /**
-      mutator method. Used to change the data in the constructor
-      @param name Policy holder's last name.
-   */
-   public void setLName(String name)
-   {
-      lName = name;
-   }
-   
-   /**
-      accessor method. Used to get info from object when needed.
-      @return The policy holder's age 
-   */
-   public int getAge()
-   {
-      return age;
-   }
-   
-   /**
-      mutator method. Used to change the data in the constructor
-      @param num Policy holder's age.
-   */
-   public void setAge(int num)
-   {
-      age = num;
-   }
-   
-   /**
-      accessor method. Used to get info from object when needed.
-      @return The policy holder's smoking status.
-   */
-   public String getSmoke()
-   {
-      return smokeStatus;
-   }
-   
-   /**
-      mutator method. Used to change the data in the constructor
-      @param status Policy holder's smoking status.
-   */
-   public void setSmoke(String status)
-   {
-      smokeStatus = status;
-   }
-   
-   /**
-      accessor method. Used to get info from object when needed.
-      @return The policy holder's height.
-   */
-   public double getHeight()
-   {
-      return height;
-   }
-   
-   /**
-      mutator method. Used to change the data in the constructor
-      @param num Policy holder's height.
-   */
-   public void setHeight(double num)
-   {
-      height = num;
-   }
-   
-   /**
-      accessor method. Used to get info from object when needed.
-      @return The policy holder's weight.
-   */
-   public double getWeight()
-   {
-      return weight;
-   }
-   
-   /**
-      mutator method. Used to change the data in the constructor
-      @param num Policy holder's weight.
-   */
-   public void setWeight(double num)
-   {
-      weight = num;
+      return new PolicyHolder(holder);
    }
    
    /**
@@ -198,7 +85,7 @@ public class Policy
    */
    public  double getBMI()
    {
-      return (weight * 703)/(height * height);
+      return (holder.getWeight() * 703)/(holder.getHeight() * holder.getHeight());
    }
    
    /**
@@ -209,9 +96,9 @@ public class Policy
    {
       double price = BASEPRICE;
       
-      if (age > 50) 
+      if (holder.getAge() > 50) 
          price += 75;
-      if (smokeStatus.equalsIgnoreCase("smoker"))
+      if (holder.getSmoke().equalsIgnoreCase("smoker"))
          price += 100;
       if (getBMI() > 35)
          price += ((getBMI() - 35)*20);
@@ -224,6 +111,6 @@ public class Policy
    */
    public String toString()
    {
-      return String.format("\nPolicy Number: %d\nProvider Name: %s ****PolicyHolder.toString()**** \nPolicyholder's BMI: %.2f\nPolicy Price: $%.2f", num, provider, getBMI(), getPrice());
+      return String.format("\nPolicy Number: %d\nProvider Name: %s %s \nPolicyholder's BMI: %.2f\nPolicy Price: $%.2f", num, provider, holder.toString(), getBMI(), getPrice());
    }
 }
