@@ -44,4 +44,9 @@ public class PolicyHolder
       weight = 0;
    }
    
+   public String toString()
+   {
+      return String.format("\nPolicyholder's First Name: %s\nPolicyholder's Last Name: %s\nPolicyholder's Age: %d\nPolicyholder's Smoking Status (smoker/non-smoker): %s\nPolicyholder's Height: %.1f inches\nPolicyholder's Weight: %.1f pounds",fName, lName, age, smokeStatus, height, weight);
+   }
+   
 }
