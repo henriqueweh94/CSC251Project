@@ -4,9 +4,8 @@
 public class Policy
 {
    //Variable declarations
-   private int num, age;
-   private String provider, fName, lName, smokeStatus;
-   private double height, weight;
+   private int num;
+   private String provider;
    
    //named constant of for the base price of the policy
    final double BASEPRICE = 600;
